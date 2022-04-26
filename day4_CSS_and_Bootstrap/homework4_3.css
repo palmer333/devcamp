@@ -1,0 +1,11 @@
+.carousel img {
+    height: 350px;
+}
+  
+.carousel .item {
+    height: 500px;
+}
+
+.footer {
+    height: 50px;
+}
