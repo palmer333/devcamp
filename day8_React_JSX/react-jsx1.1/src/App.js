@@ -25,6 +25,4 @@ class App extends React.Component {
   }
 }
 
-console.log(Header);
-
 export default App;
