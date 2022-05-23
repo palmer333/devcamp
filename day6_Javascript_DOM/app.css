@@ -1,0 +1,27 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+
+.highlight {
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 700;
+    width: 300px;
+    margin: 20px auto;
+    background-color: darkblue;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.highlight:hover {
+    color: blue;
+    background-color: palegreen;
+}
+
+.item {
+    margin: 5px 0;
+}

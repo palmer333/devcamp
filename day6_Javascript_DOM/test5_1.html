@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <button id="btn">Add an item</button>
+    <button id="deleteAll">Delete All!</button>
+    <div id="result"></div>
+
+
+    <!-- <p class="text1">สวัสดี</p>
+    <p class="text1">Hello</p>
+    <p id="text2">Text 3</p> -->
+
+
+
+
+    <!-- <a class = 'l1' href="" target="_blank"></a> -->
+    <!-- <a href="" target="_blank"></a>
+    <section></section> -->
+
+
+
+    <script>
+
+
+        // Method 1 using onclick
+        let button = document.querySelector('button');
+        button.onclick = () => {
+            const node = document.createElement("p"); // create element (node)
+            node.setAttribute('class', 'item');
+            const result = document.querySelector('#result');
+            let listBtn = document.createElement('button');
+            let delBtn = document.querySelector('#deleteAll');
+            node.innerHTML = "<strong style= 'color:blue; margin-right: 10px;'>an item</strong>"; // add text 
+            node.appendChild(listBtn);
+            listBtn.textContent = 'Delete';
+            result.appendChild(node); //add node to result(div #result)
+
+            listBtn.onclick = () => {
+                result.removeChild(node);
+            }
+
+            delBtn.onclick = () => {
+                while (result.lastElementChild) {
+                    result.removeChild(result.lastElementChild);
+                }
+            }
+
+            console.log(result.lastElementChild);
+        };
+
+        // Method 2 using addEventListener
+        // document.getElementById("btn").addEventListener("click", function () {
+        //     const node = document.createElement("p");
+        //     node.innerHTML = ”<strong style=’ color:blue’>an item</strong>";
+        //     document.getElementById("result").appendChild(node);
+        // });
+
+
+
+
+
+        // document.write(window.innerHeight);
+        // document.write(" x ");
+        // document.write(window.innerWidth);
+
+
+        // let link = document.querySelector('a');
+
+        // link.textContent = 'Go to YouTube';
+        // link.href = 'https://www.youtube.com/';
+        // link.setAttribute('class', 'highlight');
+
+
+        // let sect = document.querySelector('section');
+        // let p = document.createElement('p');
+        // p.textContent = 'We hope to see you again, DOM!';
+        // sect.appendChild(p);
+        // sect.style.backgroundColor = 'lightblue';
+        // p.setAttribute('class', 'highlight')
+        // sect.removeChild(p); //remove p from sect
+
+
+
+
+
+
+
+
+        // var text1 = document.querySelectorAll("p.text1");
+        // let text2 =  document.getElementById("text2");
+        // text2.innerText = text1[1].innerHTML + " ชาวโลก";
+        // document.getElementById("text2").innerHTML = text1[1].innerHTML + " ชาวโลก";
+
+
+    </script>
+
+</body>
+
+</html>

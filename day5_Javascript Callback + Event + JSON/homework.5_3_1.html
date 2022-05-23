@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        h1,
+        h3,
+        p {
+            text-align: center;
+        }
+
+        table {
+            margin: auto;
+        }
+
+        img {
+            margin: 0 20px 0 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script>
+        let user = [];
+        let aLastName = [];
+        function getUser(callback) {
+            axios.get("https://reqres.in/api/users?delay=3").then(function (response) {
+                user = response.data.data;
+                for (let i in user) {
+                    aLastName[i] = user[i].last_name;
+                    axios.get(`https://api.genderize.io?name=${user[i].first_name}`).then(function (response) {
+                        user[i].gender = response.data.gender;
+
+                        axios.get(`https://api.agify.io/?name=${user[i].first_name}`).then(function (response) {
+                            user[i].age = response.data.age;
+                        })
+                    })
+                }
+                setTimeout(() => {
+                    callback(user);
+                    console.log(aLastName);
+                    console.log(user);
+                }, 2500);
+            })
+        }
+
+        function display(aUser) {
+            for (let i = 0; i < aUser.length; i++) {
+                document.getElementById("content").innerHTML += `<td>
+                    <h3>${aUser[i].first_name}</h3>
+                    <p>${aUser[i].email}</p>
+                    <p>${aUser[i].gender}</p>
+                    <p>${aUser[i].age}</p>
+                    <img src="${aUser[i].avatar}">
+                    </td>`
+            }
+        }
+        getUser(display);
+
+    </script>
+    <h1>Hello ReqRes users!</h1>
+    <table>
+        <tr id="content"></tr>
+    </table>
+</body>
+
+</html>

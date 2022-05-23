@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <style>
+        th {
+            border: solid 5px rgb(235, 4, 4);
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+        #jar{
+            border: solid 5px rgb(22, 10, 10);
+            margin-left: 30px;
+            margin-right: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <table id="jar">
+            <tr>
+                <div class="bar">
+                    <th>Category</th>
+                    <th>cases</th>
+                    <th>todayCases</th>
+                    <th>deaths</th>
+                    <th>todayDeaths</th>
+                    <th>recovered</th>
+                    <th>todayRecovered</th>
+                    <th>active</th>
+                    <th>critical</th>
+                </div>
+            </tr>
+        </table>
+
+    </center>
+    <script>
+        
+        function getUser(url1, url2, callback) {
+            let covidData = {"Thailand": {},"World": {}
+        }
+            axios.get(`${url1}`).then(function (response) {
+                let res = response.data
+                console.log(res)
+                covidData.Thailand.cases            = res.cases
+                covidData.Thailand.todayCases       = res.todayCases
+                covidData.Thailand.deaths           = res.deaths
+                covidData.Thailand.todayDeaths      = res.todayDeaths
+                covidData.Thailand.recovered        = res.recovered
+                covidData.Thailand.todayRecovered   = res.todayRecovered
+                covidData.Thailand.active           = res.active
+                covidData.Thailand.critical         = res.critical
+            })
+            axios.get(`${url2}`).then(function (response) {
+                let res = response.data
+                covidData.World.cases               = res.cases
+                covidData.World.todayCases          = res.todayCases
+                covidData.World.deaths              = res.deaths
+                covidData.World.todayDeaths         = res.todayDeaths
+                covidData.World.recovered           = res.recovered
+                covidData.World.todayRecovered      = res.todayRecovered
+                covidData.World.active              = res.active
+                covidData.World.critical            = res.critical
+            })
+            setTimeout(() => {
+                callback(covidData)
+            }, 800);
+        }
+        function show(covidData) {
+            document.getElementById("jar").innerHTML += `<tr><td>Thailand</td>
+            <td>${covidData.Thailand.cases}</td>
+            <td>${covidData.Thailand.todayCases}</td>
+            <td>${covidData.Thailand.deaths}</td>
+            <td>${covidData.Thailand.todayDeaths}</td>
+            <td>${covidData.Thailand.recovered}</td>
+            <td>${covidData.Thailand.todayRecovered}</td>
+            <td>${covidData.Thailand.active}</td>
+            <td>${covidData.Thailand.critical}</td>
+            </tr>`
+            document.getElementById("jar").innerHTML += `<tr><td>World</td>
+            <td>${covidData.World.cases}</td>
+            <td>${covidData.World.todayCases}</td>
+            <td>${covidData.World.deaths}</td>
+            <td>${covidData.World.todayDeaths}</td>
+            <td>${covidData.World.recovered}</td>
+            <td>${covidData.World.todayRecovered}</td>
+            <td>${covidData.World.active}</td>
+            <td>${covidData.World.critical}</td>
+            </tr>`
+        }
+        getUser("https://corona.lmao.ninja/v2/countries/thailand,show", "https://corona.lmao.ninja/v2/all", show)
+
+    </script>
+</body>
+
+</html>
+
+    </script>
+</body>
+
+</html>
