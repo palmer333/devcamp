@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+
+    <style>
+        th, td {
+            border: 1px solid gray;
+            padding: 5px 20px 5px 20px;
+            text-align: center;
+        }
+        th {
+            background-color: lightgray;
+        }
+        table {
+            margin: auto;
+            border: 1px solid darkgray;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>COVID-19 World and Thailand Update!</h2>
+    <table id="table">
+        <tr> 
+            <th>Category</th>
+            <th>cases</th>
+            <th>todayCases</th>
+            <th>deaths</th>
+            <th>todayDeaths</th>
+            <th>recovered</th>
+            <th>todayRecovered</th>
+            <th>active</th>
+            <th>critical</th>
+        </tr>
+    </table>
+
+
+    <script>    
+        
+        function getData(link1, link2, callback) {
+            
+            let covidData = {
+                "World": {}, "Thailand": {}
+            }
+            axios.get(`${link1}`).then(function (response) {
+                let rowDisplay = response.data;
+                covidData.World.cases = rowDisplay.cases;
+                covidData.World.todayCases = rowDisplay.todayCases;
+                covidData.World.deaths = rowDisplay.deaths;
+                covidData.World.todayDeaths = rowDisplay.todayDeaths;
+                covidData.World.recovered = rowDisplay.recovered;
+                covidData.World.todayRecovered = rowDisplay.todayRecovered;
+                covidData.World.active = rowDisplay.active;
+                covidData.World.critical = rowDisplay.critical;
+
+                axios.get(`${link2}`).then(function (response) {
+                let rowDisplay = response.data;
+                covidData.Thailand.cases = rowDisplay.cases;
+                covidData.Thailand.todayCases = rowDisplay.todayCases;
+                covidData.Thailand.deaths = rowDisplay.deaths;
+                covidData.Thailand.todayDeaths = rowDisplay.todayDeaths;
+                covidData.Thailand.recovered = rowDisplay.recovered;
+                covidData.Thailand.todayRecovered = rowDisplay.todayRecovered;
+                covidData.Thailand.active = rowDisplay.active;
+                covidData.Thailand.critical = rowDisplay.critical;
+                callback(covidData);
+            })
+               
+            })
+            
+        }
+        function display(covidData) {
+            document.getElementById("table").innerHTML += `<tr><td>World</td>
+            <td>${covidData.World.cases}</td>
+            <td>${covidData.World.todayCases}</td>
+            <td>${covidData.World.deaths}</td>
+            <td>${covidData.World.todayDeaths}</td>
+            <td>${covidData.World.recovered}</td>
+            <td>${covidData.World.todayRecovered}</td>
+            <td>${covidData.World.active}</td>
+            <td>${covidData.World.critical}</td>
+            </tr>`
+            document.getElementById("table").innerHTML += `<tr><td>Thailand</td>
+            <td>${covidData.Thailand.cases}</td>
+            <td>${covidData.Thailand.todayCases}</td>
+            <td>${covidData.Thailand.deaths}</td>
+            <td>${covidData.Thailand.todayDeaths}</td>
+            <td>${covidData.Thailand.recovered}</td>
+            <td>${covidData.Thailand.todayRecovered}</td>
+            <td>${covidData.Thailand.active}</td>
+            <td>${covidData.Thailand.critical}</td>
+            </tr>`
+        }
+
+        getData("https://corona.lmao.ninja/v2/all", "https://corona.lmao.ninja/v2/countries/thailand,show", display);
+    </script>
+
+</body>
+
+</html>

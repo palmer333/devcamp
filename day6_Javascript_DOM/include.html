@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>include</title>
+</head>
+
+<body>
+
+    <!-- <p>fajk error asd;lj dasfa</p>
+    <p>fajk success asd;lj dasfa</p>
+    <p>fajk asd;lj dasfa</p>
+    <p>fajk asd;lj error dasfa</p>
+    <p>fajk asd;lj success dasfa</p>
+
+
+    <script>
+
+
+        const paras = document.querySelectorAll('p');
+        paras.forEach(p => {
+            if (p.textContent.includes('success')) {
+                p.style.backgroundColor = 'green';
+            } else if
+                (p.textContent.includes('error')) {
+                p.style.backgroundColor = 'red';
+            }
+        });
+
+
+
+    </script> -->
+
+
+
+    <p class="number">1</p>
+    <p class="number">2</p>
+    <p class="number">3</p>
+    <p class="number">4</p>
+    <p class="number">5</p>
+    <p class="number">6</p>
+    <p class="number">7</p>
+    <p class="number">8</p>
+    <p class="number">9</p>
+    <p><strong>Result : </strong></p>
+    <p id="result"></p>
+    <script>
+        var n = document.getElementsByClassName("number");
+        let result = document.querySelector('#result')
+        var str = "";
+        for (let i = 0; i < n.length; i++) {
+            str += n[i].innerHTML + ", ";
+        }
+        // document.getElementById("result").innerHTML = str;
+        result.innerHTML = str;
+    </script>
+
+</body>
+
+</html>
