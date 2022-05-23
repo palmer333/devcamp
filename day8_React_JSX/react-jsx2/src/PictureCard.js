@@ -10,8 +10,8 @@ const pics = [
             parseInt(today.getMonth() + 1) +
             "-" +
             today.getFullYear(),
-        like: 2,
-        comment: 10,
+        like: 99,
+        comment: 15,
     },
     {
         img: "https://picsum.photos/902",
@@ -22,8 +22,8 @@ const pics = [
             parseInt(today.getMonth() + 1) +
             "-" +
             today.getFullYear(),
-        like: 5,
-        comment: 8,
+        like: 88,
+        comment: 13,
     },
     {
         img: "https://picsum.photos/903",
@@ -34,8 +34,8 @@ const pics = [
             parseInt(today.getMonth() + 1) +
             "-" +
             today.getFullYear(),
-        like: 5,
-        comment: 3,
+        like: 102,
+        comment: 13,
     },
     {
         img: "https://picsum.photos/904",
@@ -46,8 +46,8 @@ const pics = [
             parseInt(today.getMonth() + 1) +
             "-" +
             today.getFullYear(),
-        like: 11,
-        comment: 15,
+        like: 68,
+        comment: 14,
     },
     {
         img: "https://picsum.photos/905",
@@ -58,8 +58,8 @@ const pics = [
             parseInt(today.getMonth() + 1) +
             "-" +
             today.getFullYear(),
-        like: 5,
-        comment: 9,
+        like: 64,
+        comment: 14,
     },
     {
         img: "https://picsum.photos/906",
@@ -70,8 +70,8 @@ const pics = [
             parseInt(today.getMonth() + 1) +
             "-" +
             today.getFullYear(),
-        like: 7,
-        comment: 7,
+        like: 74,
+        comment: 5,
     },
     {
         img: "https://picsum.photos/907",
@@ -82,7 +82,7 @@ const pics = [
             parseInt(today.getMonth() + 1) +
             "-" +
             today.getFullYear(),
-        like: 10,
+        like: 100,
         comment: 20,
     },
     {
@@ -94,15 +94,15 @@ const pics = [
             parseInt(today.getMonth() + 1) +
             "-" +
             today.getFullYear(),
-        like: 1,
-        comment: 2,
+        like: 79,
+        comment: 8,
     },
 ];
 
 const css = {
     display: "inline-block",
-    width: "22%",
-    margin: "1%",
+    width: "24%",
+    margin: "0.5%",
     backgroundColor: "#ffdab9",
 };
 
@@ -136,7 +136,7 @@ const message = pics.map((x, i) => {
 });
 
 const PictureCard = () => {
-    return <div>{message}</div>;
+    return <div style={{justifyContent:"center"}}>{message}</div>;
 };
 
 export default PictureCard;

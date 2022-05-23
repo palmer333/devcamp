@@ -4,14 +4,14 @@ const nav = {
     display:"flex",
     justifyContent: "space-between",
     backgroundColor: "#ffdab9",
-    padding: "10px 50px"
+    padding: "5px 50px"
 };
 
 
 const menu = {
     textDecoration: "none",
     color: "#f08080",
-    fontSize: "1.25em"
+    fontSize: "1em"
 };
 
 const li = {

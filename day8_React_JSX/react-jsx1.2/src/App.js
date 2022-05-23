@@ -13,4 +13,5 @@ function App() {
   );
 }
 
+console.log("Header");
 export default App;
