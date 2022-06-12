@@ -246,7 +246,7 @@ const FormComp = () => {
                     <Option value="chonburi">Chonburi</Option>
                     <Option value="phuket">Phuket</Option>
                     <Option value="khonkaen">Khonkaen</Option>
-                    <Option value="nan">Nan</Option>
+                    <Option value="chiangmai">Chiang Mai</Option>
                     <Option value="abroad">Abroad</Option>
                 </Select>
             </Form.Item>
